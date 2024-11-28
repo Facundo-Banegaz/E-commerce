@@ -1,124 +1,51 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<partial name="_BannerHomePartial" />
-<div class="latest-products">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-heading">
-                    <h2>Latest Products</h2>
-                    <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
-                </div>
+@model List<Ecommerce.Models.Producto>
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="">
+                <h2>Últimos productos</h2>
+                <a asp-controller="Home" asp-action="Productos">Ver todos los Productos <i class="fa fa-angle-right"></i></a>
             </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="./images/product_01.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Tittle goes here</h4></a>
-                        <h6>$25.75</h6>
-                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (24)</span>
+            
+            @foreach(var item in Model)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                        <img class="card-img-top" src="@item.Portada" alt="@item.Nombre"
+                        onerror="this.onerror=null;this.src='https://tse3.mm.bing.net/th?id=OIP.vHTlskERbfe1SE7n3FOVyQHaGp&pid=Api&P=0&h=180';" />
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <h5 class="fw-bolder">@item.Nombre</h5>
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        if (i <= (int)@item.Calificacion)
+                                        {
+                                            <div class="bi-star-fill"></div> 
+                                        }
+                                        else
+                                        {
+                                            <div class="bi-star"></div> 
+                                        }
+                                    }
+                                </div>
+                                @item.Precio
+                            </div>
+                        </div>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" asp-action="Details" asp-route-id="@item.Id">Ver Detalle</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="./images/product_02.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Tittle goes here</h4></a>
-                        <h6>$30.25</h6>
-                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (21)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="./images/product_03.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Tittle goes here</h4></a>
-                        <h6>$20.45</h6>
-                        <p>Sixteen Clothing is free CSS template provided by TemplateMo.</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (36)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="./images/product_04.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Tittle goes here</h4></a>
-                        <h6>$15.25</h6>
-                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (48)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="./images/product_05.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Tittle goes here</h4></a>
-                        <h6>$12.50</h6>
-                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (16)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-item">
-                    <a href="#"><img src="./images/product_06.jpg" alt=""></a>
-                    <div class="down-content">
-                        <a href="#"><h4>Tittle goes here</h4></a>
-                        <h6>$22.50</h6>
-                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>Reviews (32)</span>
-                    </div>
-                </div>
-            </div>
+            }
+            
         </div>
     </div>
-</div>
+</section>

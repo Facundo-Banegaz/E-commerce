@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Details";
+}
+
+@model Ecommerce.Models.Producto
+
+
+
+<div class="container-fluid">
+
+    <!-- Carrusel de imágenes del producto -->
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach (var imageUrl in Model.ProductoImagens)
+            {
+                <div class="carousel-item @(imageUrl == Model.ProductoImagens.First() ? "active" : "")">
+                    <img src="@imageUrl.Imagen" class="d-block w-100 img-fluid" alt="Imagen de @Model.Nombre" style="max-height: 500px; object-fit: cover;">
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <!-- Detalles del producto -->
+    <div class="card mb-5">
+        <div class="card-body">
+            <div class="row g-4 mt-4">
+                <!-- Sección izquierda con los detalles del producto -->
+                <div class="col-md-6">
+                    <h2>@Model.Nombre</h2>
+                    <p><strong>Categoria: </strong>@Model.Categoria.Nombre</p>
+                    <p><strong>Precio: </strong>$@Model.Precio</p>
+                    <p><strong>Descripción: </strong>@Model.Descripcion</p>
+
+                    <h4>Calificación:</h4>
+
+                </div>
+
+                <!-- Sección derecha con detalles adicionales -->
+                <div class="col-md-6">
+                    <h4>Detalles Adicionales:</h4>
+                    <p><strong>Cantidad Disponible: </strong>@Model.Cantidad</p>
+                    <p><strong>Promocionado: </strong>@(Model.Promocionado ? "Sí" : "No")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

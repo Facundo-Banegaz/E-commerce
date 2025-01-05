@@ -24,8 +24,8 @@ namespace Ecommerce.Models
         public double Precio { get; set; }
         
 
-        [Required(ErrorMessage = "Por favor seleccionar una Subcategoría")]
-        public virtual Subcategoria Subcategoria { get; set; }
+        [Required(ErrorMessage = "Por favor seleccionar una Categoría")]
+        public virtual Categoria Categoria { get; set; }
 
 
         [Required(ErrorMessage = "Por favor seleccionar el Estado")]

@@ -17,7 +17,7 @@ namespace Ecommerce.Models
 
 
         // Relación 1 a muchos con Subcategoría
-        public ICollection<Subcategoria>? Subcategorias { get; set; }
+        public ICollection<Producto>? Productos { get; set; }
 
     }
 }

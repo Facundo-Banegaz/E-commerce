@@ -1,4 +1,5 @@
-﻿using Ecommerce.Data;
+﻿
+using Ecommerce.Datos.Data;
 using Ecommerce.Models;
 using Ecommerce.Services.Definicion;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace Ecommerce.Services.Implementacion
         {
             var producto = _EcommerceContext.Productos
     .Where(a => a.Id == Id)    // Filtra por el Id específico del producto
-    .Include(a => a.Subcategoria)  // Incluir la relación de Categoría
+    .Include(a => a.Categoria)  // Incluir la relación de Categoría
     .Include(a => a.ProductoImagens) // Incluir la relación de ProductoImagens
     .FirstOrDefault();  // Devuelve el primer (o único) resultado o null si no lo encuentra
 
